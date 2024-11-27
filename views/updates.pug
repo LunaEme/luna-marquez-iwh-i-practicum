@@ -1,0 +1,46 @@
+doctype html
+html 
+    head 
+        title= `${title}`
+        meta(name="viewport" content="width=device-width, initial-scale=1")
+        link(rel="stylesheet", href="/css/style.css")
+    body    
+        h1 Pets
+
+        //- Form for Existing Pets
+        form(method="POST" action="/update-pets")
+            h2 Existing Pets
+            .cards 
+                each pet in data
+                    .card 
+                        h3.card__pet Pet ID #{pet.properties.hs_object_id}
+                        div 
+                            label(for=`type-${pet.properties.hs_object_id}`) Type:
+                            input#type(type="text", name=`type-${pet.properties.hs_object_id}`, value=pet.properties.type)
+                        div 
+                            label(for=`color-${pet.properties.hs_object_id}`) Color:
+                            input#color(type="text", name=`color-${pet.properties.hs_object_id}`, value=pet.properties.color)
+                        div 
+                            label(for=`size-${pet.properties.hs_object_id}`) Size:
+                            input#size(type="text", name=`size-${pet.properties.hs_object_id}`, value=pet.properties.size)
+                        div 
+                            label(for=`name-${pet.properties.hs_object_id}`) Name:
+                            input#name(type="text", name=`name-${pet.properties.hs_object_id}`, value=pet.properties.name)
+            button(type="submit") Update pets
+
+        //- Form for Adding a New Pet
+    form(method="POST" action="/remove")
+        h2 Add a New Pet
+        div 
+            label(for="new-type") Type:
+            input#new-type(type="text", name="newType", placeholder="Enter pet type")
+        div 
+            label(for="new-color") Color:
+            input#new-color(type="text", name="newColor", placeholder="Enter pet color")
+        div 
+            label(for="new-size") Size:
+            input#new-size(type="text", name="newSize", placeholder="Enter pet size")
+        div 
+            label(for="new-name") Size:
+            input#new-name(type="text", name="newName", placeholder="Enter pet name")
+        button(type="submit") Add New Pet
